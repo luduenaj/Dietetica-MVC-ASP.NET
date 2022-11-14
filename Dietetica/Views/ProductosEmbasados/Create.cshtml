@@ -1,0 +1,62 @@
+﻿@model Dietetica.Models.ProductoEmbasado
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ProductoEmbasado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precioPorUnidad" class="control-label"></label>
+                <input asp-for="precioPorUnidad" class="form-control" />
+                <span asp-validation-for="precioPorUnidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gramos" class="control-label"></label>
+                <input asp-for="gramos" class="form-control" />
+                <span asp-validation-for="gramos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <img src="" id="imagen" style="max-width:50px" />
+                <label asp-for="foto" class="control-label"></label>
+                <input name="seleccionImg" id="seleccionImg" type="file" accept="image/jpeg" />
+                <span asp-validation-for="foto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTipoVenta" class="control-label">Tipo de Venta</label>
+                <select asp-for="IdTipoVenta" class="form-control" asp-items="ViewBag.TiposList"></select>
+                <span asp-validation-for="IdTipoVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label">Proveedor</label>
+                <select asp-for="IdProveedor" class="form-control" asp-items="ViewBag.proveedorList"></select>
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/js//preview.js"></script>

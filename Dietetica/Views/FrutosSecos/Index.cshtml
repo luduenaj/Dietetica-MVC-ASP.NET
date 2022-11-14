@@ -1,0 +1,68 @@
+﻿@model Dietetica.ModelsView.FrutoSecoViewModel
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <h1>Frutos Secos</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <form asp-action="Index" method="get">
+        <p>
+            Filtros:<br />
+            Nombre: <input type="text" name="busqNombre" value="@Model.busqNombre" />
+            Proveedor: <select name="proveedorId" asp-items="@Model.ListaProveedores">
+                <option value="">Todos</option>
+            </select>
+            <input type="submit" value="Filtrar" />
+        </p>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaFrutosSecos[0].nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaFrutosSecos[0].precioXKg)
+                </th>
+                <th>
+                    Tipo de venta
+                </th>
+                <th>
+                    Proveedor
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListaFrutosSecos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.precioXKg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tipoVenta.tipoDeVenta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.proveedor.nombre)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <partial name="_paginador" for="@Model.paginador" />

@@ -1,0 +1,69 @@
+﻿@model Dietetica.ModelsView.SemillaViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Semillas</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <p>
+        Filtros:<br />
+        Nombre: <input type="text" name="busqNombre" value="@Model.busqNombre" />
+        Proveedor: <select name="proveedorId" asp-items="@Model.ListaProveedores">
+            <option value="">Todos</option>
+        </select>
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaSemillas[0].nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaSemillas[0].precioXKg)
+            </th>
+            <th>
+                Tipo de venta
+            </th>
+            <th>
+                Proveedor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListaSemillas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precioXKg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idTipoVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idProveedor)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<partial name="_paginador" for="@Model.paginador" />
+
