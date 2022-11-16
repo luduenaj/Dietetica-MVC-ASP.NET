@@ -3,38 +3,41 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<head>
+    <link href="~/css/editStyle.css" rel="stylesheet" />
+</head>
 
 <h1>Edit</h1>
 
 <h4>TeEnHebras</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="shadow-sm p-3 mb-5 bg-white rounded" id="card">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="nombre" class="control-label"></label>
+                <label asp-for="nombre" class="control-label">Nombre</label>
                 <input asp-for="nombre" class="form-control" />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="precioX100gr" class="control-label"></label>
+                <label asp-for="precioX100gr" class="control-label">Precio por 100 gramos</label>
                 <input asp-for="precioX100gr" class="form-control" />
                 <span asp-validation-for="precioX100gr" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdTipoVenta" class="control-label"></label>
-                <input asp-for="IdTipoVenta" class="form-control" />
+                <label asp-for="IdTipoVenta" class="control-label">Tipo de venta</label>
+                <select asp-for="IdTipoVenta" class="form-control" asp-items="ViewBag.idTipoVenta" disabled></select>
                 <span asp-validation-for="IdTipoVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdProveedor" class="control-label"></label>
-                <input asp-for="IdProveedor" class="form-control" />
+                <label asp-for="IdProveedor" class="control-label">Proveedor</label>
+                <select asp-for="IdProveedor" class="form-control" asp-items="ViewBag.idProveedor"></select>
                 <span asp-validation-for="IdProveedor" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group" id="saveDiv">
+                <input type="submit" value="Save" id="saveBtn" class="btn btn-primary" />
             </div>
         </form>
     </div>

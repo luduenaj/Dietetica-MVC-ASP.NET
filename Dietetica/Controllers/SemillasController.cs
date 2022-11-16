@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Dietetica.Data;
 using Dietetica.Models;
 using Dietetica.ModelsView;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dietetica.Controllers
 {
@@ -45,7 +46,11 @@ namespace Dietetica.Controllers
             var datosAmostrar = consulta
                 .Skip((paginador.pagActual - 1) * paginador.regXpag)
                 .Take(paginador.regXpag);
-
+            foreach (var dato in datosAmostrar)
+            {
+                dato.proveedor = _context.proveedores.Where(x => x.Id == dato.idProveedor).FirstOrDefault();
+                dato.tipoVenta = _context.tiposVentas.Where(x => x.Id == dato.idTipoVenta).FirstOrDefault();
+            }
             foreach (var item in Request.Query)
                 paginador.ValoresQueryString.Add(item.Key, item.Value);
 
@@ -76,10 +81,13 @@ namespace Dietetica.Controllers
                 return NotFound();
             }
 
+            semilla.proveedor = _context.proveedores.Where(x => x.Id == semilla.idProveedor).FirstOrDefault();
+            semilla.tipoVenta = _context.tiposVentas.Where(x => x.Id == semilla.idTipoVenta).FirstOrDefault();
             return View(semilla);
         }
 
         // GET: Semillas/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ProveedorList"] = new SelectList(_context.proveedores, "Id", "nombre");
@@ -104,6 +112,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: Semillas/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,8 +126,8 @@ namespace Dietetica.Controllers
                 return NotFound();
             }
 
-            semilla.proveedor = _context.proveedores.Where(x => x.Id == semilla.idProveedor).FirstOrDefault();
-            semilla.tipoVenta = _context.tiposVentas.Where(x => x.Id == semilla.idTipoVenta).FirstOrDefault();
+            ViewData["idProveedor"] = new SelectList(_context.proveedores, "Id", "nombre", semilla.idProveedor);
+            ViewData["idTipoVenta"] = new SelectList(_context.tiposVentas, "Id", "tipoDeVenta", semilla.idTipoVenta);
             return View(semilla);
         }
 
@@ -158,6 +167,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: Semillas/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -172,6 +182,8 @@ namespace Dietetica.Controllers
                 return NotFound();
             }
 
+            semilla.proveedor = _context.proveedores.Where(x => x.Id == semilla.idProveedor).FirstOrDefault();
+            semilla.tipoVenta = _context.tiposVentas.Where(x => x.Id == semilla.idTipoVenta).FirstOrDefault();
             return View(semilla);
         }
 

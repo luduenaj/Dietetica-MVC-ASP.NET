@@ -1,0 +1,33 @@
+﻿.form-control{
+    width: 25%;
+    display: inline;
+}
+
+.btn {
+    background-color: #28590C;
+    border-color: #97BE11;
+    color: white;
+    margin: 0 2%;
+}
+
+thead {
+    background-color: #FBFCEB;
+}
+
+.btn.edit {
+    background-color: #DFE9AC;
+    border-color: #DFE9AC;
+    color: #28590C;
+}
+
+.btn.details {
+    background-color: #97BE11;
+    border-color: #97BE11;
+    color: #28590C;
+}
+
+.btn.delete {
+    background-color: #28590C;
+    border-color: #28590C;
+    color: #DFE9AC;
+}

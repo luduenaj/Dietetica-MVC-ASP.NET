@@ -1,7 +1,9 @@
 ﻿@model Dietetica.ModelsView.paginador
 
 Total de registros encontrados: @Model.cantReg
-
+<head>
+    <link href="~/css/paginadorStyle.css" rel="stylesheet" />
+</head>
 <nav aria-label="...">
     <ul class="pagination justify-content-center">
         @if (Model.pagActual != 1)
@@ -16,7 +18,7 @@ Total de registros encontrados: @Model.cantReg
         }
 
         <li class="page-item active">
-            <a class="page-link">@(Model.pagActual)<span class="sr-only">(current)</span></a>
+            <a class="page-link" id="current">@(Model.pagActual)<span class="sr-only">(current)</span></a>
         </li>
 
         @if (Model.pagActual < Model.totalPag)

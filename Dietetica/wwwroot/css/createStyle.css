@@ -1,0 +1,37 @@
+﻿h1:first-of-type {
+    color: #28590C;
+}
+input, select {
+    text-align:center;
+}
+a:last-of-type {
+    color: #28590C;
+}
+
+a:last-of-type:hover {
+    color: #97BE11;
+}
+.btn {
+    background-color: #97BE11;
+    border-color: #28590C;
+}
+.btn:hover {
+    background-color: #28590C;
+    border-color: #97BE11;
+    color: white;
+}
+.createDiv {
+    width: 50%;
+    margin: 0 25%;
+    text-align: center;
+}
+
+/* Solo valido para Crear Proveedores */
+.importarDiv {
+    width: 40%;
+    margin: 5% 68% 25% 2%;
+}
+.importarBtn {
+    width: 30%;
+    margin: 5% 35%;
+}

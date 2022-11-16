@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.page-link, .sr-only{
+    background-color: #28590C;
+    border-color: #97BE11;
+    color: white;
+}
+    .page-link:hover, .sr-only:hover {
+        background-color: #FBFCEB;
+        border-color: #97BE11;
+        color: #28590C;
+    }
+
+#current {
+    background-color: #97BE11;
+    border-color: #28590C;
+}
+

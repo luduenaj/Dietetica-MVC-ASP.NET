@@ -3,21 +3,26 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<head>
+    <link href="~/css/indexStyle.css" rel="stylesheet" />
+</head>
 <h1>Otros productos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" style="color: #28590C;">Create New</a>
 </p>
 
 <form asp-action="Index" method="get">
     <p>
         Filtros:<br />
-        Nombre: <input type="text" name="busqNombre" value="@Model.busqNombre" />
-        Proveedor: <select name="proveedorId" asp-items="@Model.ListaProveedores">
+        Nombre: <input type="text" class="form-control mr-1" name="busqNombre" value="@Model.busqNombre" />
+        Proveedor: <select class="form-control" name="proveedorId" asp-items="@Model.ListaProveedores">
             <option value="">Todos</option>
         </select>
-        <input type="submit" value="Filtrar" />
+        @*Tipo de venta: <select name="tipoVentaId" asp-items="@Model.ListaTiposVentas">
+                <option value="">Todos</option>
+            </select>*@
+        <input type="submit" class="btn" value="Filtrar" />
     </p>
 </form>
 
@@ -25,16 +30,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ListaProductosEmbasados[0].nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ListaProductosEmbasados[0].precioPorUnidad)
+                Precio
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ListaProductosEmbasados[0].gramos)
+                Gramos
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ListaProductosEmbasados[0].foto)
+                Foto
             </th>
             <th>
                 Tipo de venta
@@ -53,7 +58,7 @@
                     @Html.DisplayFor(modelItem => item.nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.precioPorUnidad)
+                    $@Html.DisplayFor(modelItem => item.precioPorUnidad)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.gramos)
@@ -61,7 +66,7 @@
                 <td>
                     @if (!string.IsNullOrEmpty(item.foto))
                     {
-                        <img src="~/fotos/@item.foto" class="rounded-circle" style="max-width:75px" asp-append-version="true" />
+                        <img src="~/fotos/@item.foto" class="rounded" style="max-width:75px" asp-append-version="true" />
                     }
                 </td>
                 <td>
@@ -71,9 +76,9 @@
                     @Html.DisplayFor(modelItem => item.proveedor.nombre)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn edit" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                    <a class="btn details" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    <a class="btn delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

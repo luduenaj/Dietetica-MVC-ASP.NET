@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Dietetica.Data;
 using Dietetica.Models;
 using Dietetica.ModelsView;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dietetica.Controllers
 {
@@ -46,6 +47,12 @@ namespace Dietetica.Controllers
                 .Skip((paginador.pagActual - 1) * paginador.regXpag)
                 .Take(paginador.regXpag);
 
+            foreach(var dato in datosAmostrar)
+            {
+                dato.proveedor = _context.proveedores.Where(x => x.Id == dato.idProveedor).FirstOrDefault();
+                dato.tipoVenta = _context.tiposVentas.Where(x => x.Id == dato.idTipoVenta).FirstOrDefault();
+            }
+
             foreach (var item in Request.Query)
                 paginador.ValoresQueryString.Add(item.Key, item.Value);
 
@@ -57,8 +64,7 @@ namespace Dietetica.Controllers
                 busqNombre = busqNombre,
                 paginador = paginador
             };
-            ViewData["proveedoresList"] = new SelectList(_context.proveedores, "id", "nombre");
-            ViewData["tipoVentasList"] = new SelectList(_context.tiposVentas, "id", "tipoDeVenta");
+            
             return View(Datos);
         }
 
@@ -83,6 +89,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: FrutosSecos/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ProveedorList"] = new SelectList(_context.proveedores, "Id", "nombre");
@@ -107,6 +114,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: FrutosSecos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -161,6 +169,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: FrutosSecos/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -175,6 +184,8 @@ namespace Dietetica.Controllers
                 return NotFound();
             }
 
+            frutoSeco.proveedor = _context.proveedores.Where(x => x.Id == frutoSeco.idProveedor).FirstOrDefault();
+            frutoSeco.tipoVenta = _context.tiposVentas.Where(x => x.Id == frutoSeco.idTipoVenta).FirstOrDefault();
             return View(frutoSeco);
         }
 

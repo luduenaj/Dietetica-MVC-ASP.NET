@@ -10,6 +10,7 @@ using Dietetica.Models;
 using Dietetica.ModelsView;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dietetica.Controllers
 {
@@ -132,6 +133,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: Proveedores/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -154,6 +156,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: Proveedores/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -205,6 +208,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: Proveedores/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

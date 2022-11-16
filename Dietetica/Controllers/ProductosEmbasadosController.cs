@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Dietetica.Models;
 using Dietetica.ModelsView;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dietetica.Controllers
 {
@@ -26,7 +27,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: ProductosEmbasados
-        public async Task<IActionResult> Index(string busqNombre, int? proveedorId, int pagina = 1)
+        public async Task<IActionResult> Index(string busqNombre, int? proveedorId,int? tipoVentaId, int pagina = 1)
         {
             paginador paginador = new paginador()
             {
@@ -44,13 +45,22 @@ namespace Dietetica.Controllers
             {
                 consulta = consulta.Where(e => e.IdProveedor == proveedorId);
             }
+            
+            if (tipoVentaId.HasValue)
+            {
+                consulta = consulta.Where(e => e.IdTipoVenta == tipoVentaId);
+            }
 
             paginador.cantReg = consulta.Count();
 
             var datosAmostrar = consulta
                 .Skip((paginador.pagActual - 1) * paginador.regXpag)
                 .Take(paginador.regXpag);
-
+            foreach (var dato in datosAmostrar)
+            {
+                dato.proveedor = _context.proveedores.Where(x => x.Id == dato.IdProveedor).FirstOrDefault();
+                dato.tipoVenta = _context.tiposVentas.Where(x => x.Id == dato.IdTipoVenta).FirstOrDefault();
+            }
             foreach (var item in Request.Query)
                 paginador.ValoresQueryString.Add(item.Key, item.Value);
 
@@ -58,7 +68,7 @@ namespace Dietetica.Controllers
             {
                 ListaProductosEmbasados = datosAmostrar.ToList(),
                 ListaProveedores = new SelectList(_context.proveedores, "Id", "nombre", proveedorId),
-                ListaTiposVentas = new SelectList(_context.tiposVentas, "Id", "tipoDeVenta"),
+                ListaTiposVentas = new SelectList(_context.tiposVentas, "Id", "tipoDeVenta", tipoVentaId),
                 busqNombre = busqNombre,
                 paginador = paginador
             };
@@ -88,6 +98,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: ProductosEmbasados/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ProveedorList"] = new SelectList(_context.proveedores, "Id", "nombre");
@@ -129,6 +140,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: ProductosEmbasados/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -141,6 +153,9 @@ namespace Dietetica.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["idProveedor"] = new SelectList(_context.proveedores, "Id", "nombre", productoEmbasado.IdProveedor);
+            ViewData["idTipoVenta"] = new SelectList(_context.tiposVentas, "Id", "tipoDeVenta", productoEmbasado.IdTipoVenta);
             return View(productoEmbasado);
         }
 
@@ -180,6 +195,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: ProductosEmbasados/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -193,7 +209,8 @@ namespace Dietetica.Controllers
             {
                 return NotFound();
             }
-
+            productoEmbasado.proveedor = _context.proveedores.Where(x => x.Id == productoEmbasado.IdProveedor).FirstOrDefault();
+            productoEmbasado.tipoVenta = _context.tiposVentas.Where(x => x.Id == productoEmbasado.IdTipoVenta).FirstOrDefault();
             return View(productoEmbasado);
         }
 

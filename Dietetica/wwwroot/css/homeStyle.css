@@ -1,0 +1,84 @@
+﻿#frutoSeco {
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../assets/frutosSecos.jpeg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    height: 100px;
+}
+#teEnHebras {
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../assets/tesenhebras.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    height: 100px;
+}
+#semilla {
+    margin-top: 5%;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../assets/seed-wallpaper-preview.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    height: 100px;
+}
+#productos {
+    margin-top: 5%;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../assets/navbar-wallpaper.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    height: 100px;
+}
+.proveedor {
+    display: inline;
+    margin: 5%;
+}
+
+.proveedorDiv {
+    width: 80%;
+    margin: 5% 10%;
+}
+h3 {
+    color: #28590C;
+}
+.icon {
+    display:inline;
+}
+/*.a img {
+    width: 100;
+}
+
+.text-wrapper {
+    width: 100%;
+    position: relative;
+    margin-top: -40%;
+}
+
+.text-wrapper h1 {
+    text-align: center;
+    color: #ffffff;
+
+}*/

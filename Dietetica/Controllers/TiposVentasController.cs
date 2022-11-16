@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Dietetica.Data;
 using Dietetica.Models;
 using Dietetica.ModelsView;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dietetica.Controllers
 {
@@ -66,6 +67,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: TiposVentas/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -88,6 +90,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: TiposVentas/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -139,6 +142,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: TiposVentas/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

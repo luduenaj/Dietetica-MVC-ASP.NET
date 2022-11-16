@@ -1,0 +1,24 @@
+﻿h1:first-of-type {
+    color: #28590C;
+}
+a:last-of-type {
+    color: #28590C;
+}
+
+a:last-of-type:hover {
+    color: #97BE11;
+}
+
+#card {
+    width: 75%;
+    margin: 0 12.5%;
+}
+
+#saveDiv {
+    text-align: center;
+}
+
+#saveBtn {
+    background-color: #97BE11;
+    border-color: #28590C;
+}

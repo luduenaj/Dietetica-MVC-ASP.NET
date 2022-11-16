@@ -1,8 +1,50 @@
-﻿@{
+﻿@model IEnumerable<Dietetica.Models.Proveedor>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <link rel="stylesheet" href="~/css/homeStyle.css" />
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-6 rounded">
+            <a id="frutoSeco" asp-controller="FrutosSecos" asp-action="Index">
+                <h1>Frutos Secos</h1>
+            </a>
+        </div>
+        <div class="col-6">
+            <a id="teEnHebras" asp-controller="TesEnHebras" asp-action="Index">
+                <h1>Te en hebras</h1>
+            </a>
+        </div>
+        <div class="col-6">
+            <a id="semilla" asp-controller="Semillas" asp-action="Index">
+                <h1>Semillas</h1>
+            </a>
+        </div>
+        <div class="col-6">
+            <a id="productos" asp-controller="ProductosEmbasados" asp-action="Index">
+                <h1>Otros productos</h1>
+            </a>
+        </div>
+        <div class="shadow-sm p-3 mb-5 bg-white rounded proveedorDiv">
+            <h3 class="text-center">Nuestros proveedores</h3>
+            <div class="container text-center">
+            @foreach (var item in Model)
+            {
+                <h4 class="proveedor">@Html.DisplayFor(modelItem => item.nombre)</h4>
+            }
+            </div>
+        </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <div class="container">
+            <h3 class="text-center">¡Contactanos!</h3>
+            <div class="text-center">
+                <a href="#" target="_blank" class="icon"><img src="~/assets/icons/icons8-whatsapp-90.png" /></a>
+                <a class="icon" href="#" target="_blank"><img src="~/assets/icons/icons8-facebook-90.png" /></a>
+                <a class="icon" href="#" target="_blank"><img src="~/assets/icons/icons8-instagram-90.png" /></a>
+            </div>
+        </div>
+    </div>
 </div>

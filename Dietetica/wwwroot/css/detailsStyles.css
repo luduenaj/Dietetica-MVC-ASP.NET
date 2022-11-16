@@ -1,0 +1,24 @@
+﻿h1:first-of-type {
+    color: #28590C;
+    border-bottom: 2px;
+    border-color: #97BE11;
+}
+.detailsDiv{
+    width: 50%;
+    margin: 0 25%;
+    text-align: center;
+}
+a {
+    color: #28590C;
+}
+a:hover {
+        color: #97BE11;
+}
+dt {
+    color: #28590C;
+}
+.btnDiv {
+    text-align: center;
+    width: 50%;
+    margin: 0 25%;
+}

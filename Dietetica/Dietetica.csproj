@@ -23,4 +23,8 @@
     <Folder Include="wwwroot\importaciones\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\icono.ico" />
+  </ItemGroup>
+
 </Project>

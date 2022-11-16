@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Dietetica.Data;
 using Dietetica.Models;
 using Dietetica.ModelsView;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dietetica.Controllers
 {
@@ -45,10 +46,15 @@ namespace Dietetica.Controllers
             var datosAmostrar = consulta
                 .Skip((paginador.pagActual - 1) * paginador.regXpag)
                 .Take(paginador.regXpag);
-
+            foreach(var dato in datosAmostrar)
+            {
+                dato.proveedor = _context.proveedores.Where(x => x.Id == dato.IdProveedor).FirstOrDefault();
+                dato.tipoVenta = _context.tiposVentas.Where(x => x.Id == dato.IdTipoVenta).FirstOrDefault();
+            }
             foreach (var item in Request.Query)
+            {
                 paginador.ValoresQueryString.Add(item.Key, item.Value);
-
+            }
             TeEnHebrasViewModel Datos = new TeEnHebrasViewModel()
             {
                 ListaTesEnHebras = datosAmostrar.ToList(),
@@ -82,6 +88,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: TesEnHebras/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ProveedorList"] = new SelectList(_context.proveedores, "Id", "nombre");
@@ -106,6 +113,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: TesEnHebras/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -118,6 +126,9 @@ namespace Dietetica.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["idProveedor"] = new SelectList(_context.proveedores, "Id", "nombre", teEnHebras.IdProveedor);
+            ViewData["idTipoVenta"] = new SelectList(_context.tiposVentas, "Id", "tipoDeVenta", teEnHebras.IdTipoVenta);
             return View(teEnHebras);
         }
 
@@ -157,6 +168,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: TesEnHebras/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -171,6 +183,8 @@ namespace Dietetica.Controllers
                 return NotFound();
             }
 
+            teEnHebras.proveedor = _context.proveedores.Where(x => x.Id == teEnHebras.IdProveedor).FirstOrDefault();
+            teEnHebras.tipoVenta = _context.tiposVentas.Where(x => x.Id == teEnHebras.IdTipoVenta).FirstOrDefault();
             return View(teEnHebras);
         }
 
