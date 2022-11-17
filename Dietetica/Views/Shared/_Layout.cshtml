@@ -32,12 +32,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="TesEnHebras" asp-action="Index">Te en hebras</a>
                             </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Proveedores" asp-action="Index">Proveedores</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="TiposVentas" asp-action="Index">Tipo de Venta</a>
                             </li>
+                            }
                         </ul>
                     </div>
                 </div>
