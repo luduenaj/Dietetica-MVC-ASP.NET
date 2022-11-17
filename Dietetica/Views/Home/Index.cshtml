@@ -33,7 +33,12 @@
             <div class="container text-center">
             @foreach (var item in Model)
             {
-                <h4 class="proveedor">@Html.DisplayFor(modelItem => item.nombre)</h4>
+                <h4 class="proveedor">
+                    <a style="text-decoration: none; color: black;"
+                    asp-controller="Proveedores" asp-action="Details" asp-route-id="@item.Id"
+                    >@Html.DisplayFor(modelItem => item.nombre)
+                    </a>
+                </h4>
             }
             </div>
         </div>
