@@ -22,6 +22,7 @@ namespace Dietetica.Controllers
         }
 
         // GET: FrutosSecos
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string busqNombre, int? proveedorId, int pagina = 1)
         {
             paginador paginador = new paginador()
@@ -70,6 +71,7 @@ namespace Dietetica.Controllers
 
 
         // GET: FrutosSecos/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
