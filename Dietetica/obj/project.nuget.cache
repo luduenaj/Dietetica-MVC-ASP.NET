@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PD0aZH/CvhtSiX0Pnq5LekkER6OtYzJHIcRPWhx9Tr7Syi2dZeJxQtMT2prbjscoqBi0/4eoEOYvO6oBbN02uw==",
+  "dgSpecHash": "K3fdwTcJm6jpcZdtko6wo0s9wmg1vPu7tqlEIWcPc3/6LeDz8J0t7hqC0f4ZtE4RG1XB7huDbnc4lYnPTSOwWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\usuario\\Desktop\\Dietetica\\Dietetica\\Dietetica.csproj",
   "expectedPackageFiles": [
@@ -181,8 +181,7 @@
     "C:\\Users\\usuario\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\usuario\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\usuario\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512"
+    "C:\\Users\\usuario\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

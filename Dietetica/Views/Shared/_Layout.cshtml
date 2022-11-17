@@ -27,19 +27,19 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Semillas" asp-action="Index">Semillas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ProductosEmbasados" asp-action="Index">Otros Productos</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="TesEnHebras" asp-action="Index">Te en hebras</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TesEnHebras" asp-action="Index">Te en hebras</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ProductosEmbasados" asp-action="Index">Otros Productos</a>
                             </li>
                             @if (User.Identity.IsAuthenticated)
                             {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Proveedores" asp-action="Index">Proveedores</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TiposVentas" asp-action="Index">Tipo de Venta</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Proveedores" asp-action="Index">Proveedores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="TiposVentas" asp-action="Index">Tipo de Venta</a>
+                                </li>
                             }
                         </ul>
                     </div>
