@@ -32,7 +32,15 @@
         </dd>
     </dl>
 </div>
+@if (User.Identity.IsAuthenticated)
+{
 <div class="btnDiv">
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+}
+@if (!User.Identity.IsAuthenticated) {
+    <div class="btnDiv">
+        <a asp-controller="Home" asp-action="Index">Back to home</a>
+    </div>
+}
