@@ -2,7 +2,7 @@
 ## Tecnicatura universitaria en programación UTN San Fco
 ### Proyecto ASP.NET Core 3.1 MVC utilizando EntityFramework y Identity
 Me base en una dietetica para hacer el modelo.
-
+Capturas de pantalla en Wiki
 ### Consignas:
 1- Crear una aplicación que permita representar un modelo a elección.
 2- El Index debe ser una presentación del sitio.
